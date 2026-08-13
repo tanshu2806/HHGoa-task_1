@@ -494,6 +494,18 @@ document.addEventListener("DOMContentLoaded", () => {
     return -1;
   }
 
+  function hitPhoto(cx, cy) {
+    if (!state.photo) return false;
+    if (state.template === "frame") return true;
+    if (state.template === "builderID") {
+      return cx >= 299 && cx <= 774 && cy >= 388 && cy <= 842;
+    }
+    if (state.template === "teamID") {
+      return cx >= 129 && cx <= 951 && cy >= 328 && cy <= 862;
+    }
+    return false;
+  }
+
   // Canvas Dragging (photo + team labels)
   canvas.addEventListener("mousedown", (e) => {
     const { cx, cy } = toCanvasCoords(e.offsetX, e.offsetY);
@@ -501,7 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lbl !== -1) {
       draggingLabel = lbl;
       dragStart = { x: e.offsetX, y: e.offsetY };
-    } else if (state.photo) {
+    } else if (hitPhoto(cx, cy)) {
       isDragging = true;
       dragStart = { x: e.offsetX, y: e.offsetY };
     }
@@ -551,7 +563,7 @@ document.addEventListener("DOMContentLoaded", () => {
         draggingLabel = lbl;
         dragStart = { x: ox, y: oy };
         e.preventDefault();
-      } else if (state.photo) {
+      } else if (hitPhoto(cx, cy)) {
         isDragging = true;
         dragStart = { x: ox, y: oy };
         e.preventDefault();
