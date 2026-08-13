@@ -550,18 +550,23 @@ document.addEventListener("DOMContentLoaded", () => {
       if (lbl !== -1) {
         draggingLabel = lbl;
         dragStart = { x: ox, y: oy };
+        e.preventDefault();
       } else if (state.photo) {
         isDragging = true;
         dragStart = { x: ox, y: oy };
+        e.preventDefault();
       }
     },
-    { passive: true },
+    { passive: false },
   );
 
   canvas.addEventListener(
     "touchmove",
     (e) => {
       if (e.touches.length !== 1) return;
+      if (draggingLabel !== -1 || isDragging) {
+        e.preventDefault();
+      }
       const touch = e.touches[0];
       const rect = canvas.getBoundingClientRect();
       const touchX = touch.clientX - rect.left;
@@ -583,7 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
         render();
       }
     },
-    { passive: true },
+    { passive: false },
   );
 
   window.addEventListener("touchend", () => {

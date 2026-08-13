@@ -84,7 +84,7 @@ header {
     width: 150px;
     filter: drop-shadow(2px 3px 6px rgba(0, 0, 0, 0.7));
     transition: transform 0.3s ease;
-    animation: swing 4s ease-in-out infinite;
+    animation: swing 8s ease-in-out infinite;
 }
 
 .hanging-logo-container:hover .goa-hindi-img {
@@ -106,15 +106,15 @@ header {
 
 @keyframes swing {
     0% {
-        transform: rotate(-8deg);
+        transform: translateY(0px) rotate(0deg);
     }
 
     50% {
-        transform: rotate(8deg);
+        transform: translateY(10px) rotate(5deg);
     }
 
     100% {
-        transform: rotate(-8deg);
+        transform: translateY(0px) rotate(0deg);
     }
 }
 
@@ -376,6 +376,7 @@ canvas {
     height: 100%;
     object-fit: contain;
     display: block;
+    touch-action: none;
 }
 
 .placeholder-overlay {
@@ -765,4 +766,36 @@ canvas {
 
 #id-canvas:active {
     cursor: grabbing;
+}
+
+/* Mobile Responsiveness Restored */
+@media (max-width: 768px) {
+    body { padding: 0.8rem; }
+    .main-brand { font-size: 2rem; }
+    .sub-hero-title { font-size: 1.3rem; }
+    header p { font-size: 0.9rem; }
+    .goa-hindi-img { width: 100px; }
+    .hanging-logo-container { height: 50px; margin: 0.2rem 0; }
+    .selection-heading { font-size: 1.2rem; margin-bottom: 1.5rem; }
+    .choice-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .choice-title { font-size: 1.1rem; }
+    .choice-desc { font-size: 0.8rem; }
+    .controls-section { padding: 1rem; box-shadow: 4px 4px 0 #000; }
+    .input-group label { font-size: 0.85rem; }
+    input[type="text"] { padding: 0.6rem 0.8rem; font-size: 0.9rem; box-shadow: 2px 2px 0 #000; }
+    .file-upload-label { padding: 0.8rem; box-shadow: 2px 2px 0 #000; }
+    .file-upload-label span { font-size: 0.8rem; }
+    .primary-btn { padding: 0.8rem; font-size: 0.95rem; box-shadow: 4px 4px 0 #000; }
+    .action-btn { font-size: 0.8rem; padding: 0.7rem; width: 100%; }
+    .back-btn { font-size: 0.75rem; padding: 0.4rem 0.6rem; }
+    .active-mode-badge { font-size: 0.75rem; padding: 0.3rem 0.6rem; }
+    .title-display-box span { font-size: 0.9rem; padding: 0.6rem; }
+    .capture-btn { font-size: 0.8rem; padding: 0.6rem; }
+    .canvas-container { max-width: 100%; box-shadow: 6px 6px 0 rgba(0, 0, 0, 1); }
+    .selection-card { padding: 1.5rem 1rem; box-shadow: 6px 6px 0 #000; }
+    .choice-btn { padding: 1.2rem 0.8rem; box-shadow: 4px 4px 0 #000; }
+    .actions { flex-direction: column; gap: 0.8rem; }
+    .sliders .slider-row { flex-direction: column; align-items: flex-start; }
+    .slider-row label { font-size: 0.75rem; }
+    .slider-row input[type=range] { width: 100%; margin-top: 0.3rem; }
 }
